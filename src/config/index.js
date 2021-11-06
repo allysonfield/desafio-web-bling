@@ -1,0 +1,9 @@
+const USER_API_BASE_URI = process.env.REACT_APP_USER_API_BASE_URI
+const TOKEN_KEY_NAME = process.env.REACT_APP_TOKEN_KEY_NAME
+
+const config = {
+  USER_API_BASE_URI,
+  TOKEN_KEY_NAME,
+}
+
+export { config, USER_API_BASE_URI, TOKEN_KEY_NAME }
