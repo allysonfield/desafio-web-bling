@@ -1,9 +1,10 @@
 import { connectRouter } from 'connected-react-router'
 import { combineReducers } from 'redux'
 
-import task from '@redux/stores/task/task-root-reducer'
-import requesting from '@redux/stores/requesting/requesting-reducer'
-import error from '@redux/stores/error/error-reducer'
+import task from '../stores/task/task/task-reducer'
+import requesting from '../stores/requesting/requesting-reducer'
+import error from '../stores/error/error-reducer'
+import repo from '../stores/repos/repo-reducer'
 
 const rootReducer = history => {
   const reducerMap = {
@@ -11,6 +12,7 @@ const rootReducer = history => {
     requesting,
     error,
     task,
+    repo,
   }
 
   return combineReducers(reducerMap)

@@ -1,6 +1,8 @@
 const Routes = {
-  Home: '/',
+  Home: '/home',
   SignOut: '/signout',
+  SignIn: '/signin',
+  Repo: '/repo',
   AuthenticationCallback: '/auth/callback',
   Task: {
     New: '/task/new',
@@ -12,6 +14,10 @@ const Routes = {
 const Endpoints = {
   LoginApi: {
     entrar: '/'
+  },
+  GithubApi: {
+    Repos: '/repos/:repositoryName',
+    Issues: '/repos/:repositoryName/issues'
   },
   TasksAPI: {
     Task: {

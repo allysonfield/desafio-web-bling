@@ -3,7 +3,7 @@ import baseReducer from '../../../../utils/base-reducer'
 
 
 import * as Actions from './task-actions'
-import { indexOfId } from '@utils/object-utility'
+import { indexOfId } from '../../../../utils/object-utility'
 
 export const initialState = {
  tasks: [],

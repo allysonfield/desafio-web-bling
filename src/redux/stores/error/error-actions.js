@@ -1,4 +1,4 @@
-import * as ActionUtility from '@utils/action-utility'
+import * as ActionUtility from '../../../utils/action-utility'
 
 export const REMOVE = 'Error.REMOVE'
 

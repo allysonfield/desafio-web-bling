@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router'
 
-import * as ActionUtility from '@utils/action-utility'
+import * as ActionUtility from '../../../../utils/action-utility'
 import * as Effects from './task-effects'
 
 export const REQUEST_CRIAR = 'Task.REQUEST_CRIAR'
@@ -30,50 +30,4 @@ export const SET_DATA = 'Task.SET_DATA'
 
 export function setData(data) {
   return ActionUtility.createAction(SET_DATA, data)
-}
-
-export function criar() {
-  return async (dispatch, getState) => {
-    const {
-      model: { id },
-    } = await ActionUtility.createThunkEffect(dispatch, REQUEST_CRIAR, Effects.criar)
-
-    dispatch(push(`${id}`))
-  }
-}
-
-export function obter(taskId) {
-  return async (dispatch, getState) => {
-    ActionUtility.createThunkEffect(dispatch, REQUEST_GET, Effects.obter, taskId)
-  }
-}
-
-export function atualizarDados(taskId, dados) {
-  return async (dispatch, getState) => {
-    return ActionUtility.createThunkEffect(dispatch, REQUEST_ATUALIZAR_DADOS, Effects.atualizarDados, taskId, dados)
-  }
-}
-
-export function deletar(taskId, motivo) {
-  return async (dispatch, getState) => {
-    ActionUtility.createThunkEffect(dispatch, REQUEST_DELETAR, Effects.deletar, taskId, motivo)
-  }
-}
-
-export function obterDocumentos(taskId) {
-  return async (dispatch, getState) => {
-    ActionUtility.createThunkEffect(dispatch, REQUEST_OBTER_DOCUMENTOS, Effects.obterDocumentos, taskId)
-  }
-}
-
-export function criarDocumento(taskId, id, arquivo) {
-  return async (dispatch, getState) => {
-    ActionUtility.upload(dispatch, REQUEST_UPLOAD_DOCUMENTO, id, arquivo, Effects.criarDocumento, taskId)
-  }
-}
-
-export function deletarDocumento(taskId, documentoId) {
-  return async (dispatch, getState) => {
-    await ActionUtility.createThunkEffect(dispatch, REQUEST_DELETAR_DOCUMENTO, Effects.deletarDocumento, taskId, documentoId)
-  }
 }

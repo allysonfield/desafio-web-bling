@@ -1,13 +1,12 @@
 import React, { useContext, useState, useCallback } from 'react'
 
-import { URL_WEB, TOKEN_KEY_NAME, USER_KEY_NAME } from '../config'
+import { TOKEN_KEY_NAME } from '../config'
 import { Endpoints } from '../constants' 
 import api from '../services/api'
 import { get } from '../utils/http-utility'
 
 const removeSessionData = () => {
   window.sessionStorage.removeItem(TOKEN_KEY_NAME)
-  window.sessionStorage.removeItem(USER_KEY_NAME)
 }
 
 const setApiToken = token => {
@@ -24,11 +23,10 @@ const AuthContext = React.createContext({
 const AuthProvider = ({ children }) => {
   const [data, setData] = useState(() => {
     const token = window.sessionStorage.getItem(TOKEN_KEY_NAME)
-    const user = window.sessionStorage.getItem(USER_KEY_NAME)
 
-    if (token && user) {
+    if (token) {
       setApiToken(token)
-      return { isAuthenticated: true, token, user: JSON.parse(user) }
+      return { isAuthenticated: true, token: JSON.parse(token) }
     }
 
     return { isAuthenticated: false, user: {} }
@@ -43,24 +41,22 @@ const AuthProvider = ({ children }) => {
       removeSessionData()
       setApiToken(response.token)
       setData({ isAuthenticated: true, token: response.token, user: response })
-      window.sessionStorage.setItem(TOKEN_KEY_NAME, response.token)
-      window.sessionStorage.setItem(USER_KEY_NAME, JSON.stringify(response))
+      window.sessionStorage.setItem(TOKEN_KEY_NAME, JSON.parse(response.token))
     }
   }
 
-  const signOut = useCallback(() => {
-    removeSessionData()
-    setData({})
-    window.location.href = URL_WEB
-  }, [])
+  // const signOut = useCallback(() => {
+  //   removeSessionData()
+  //   setData({})
+  //   window.location.href = URL_WEB
+  // }, [])
 
   return (
     <AuthContext.Provider
       value={{
         isAuthenticated: data.isAuthenticated,
         user: data.user,
-        signIn,
-        signOut,
+        signIn
       }}
     >
       {children}
