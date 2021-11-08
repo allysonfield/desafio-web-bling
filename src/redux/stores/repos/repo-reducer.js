@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import baseReducer from '../../../utils/base-reducer'
+import baseReducer from '@utils/base-reducer'
 
 
 import * as Actions from './repo-actions'
@@ -11,14 +11,11 @@ export const initialState = {
   description: '',
   stargazers_count: null,
   forks_count: null,
-  open_issues_count: null,
-  issues_url: '',
-  issues: null
+  issues: []
 }
 
 const repoReducer = baseReducer(initialState, {
-  [Actions.REQUEST_GET_FINISHED](state, payload ) {
-    console.log({payload})
+  [Actions.REQUEST_GET_FINISHED](state, { payload } ) {
     return produce(state, draft => {
       draft.id = payload.id
       draft.full_name = payload.full_name
@@ -30,9 +27,7 @@ const repoReducer = baseReducer(initialState, {
   },
   [Actions.REQUEST_GET_ISSUES_FINISHED](state, { payload }) {
     return produce(state, draft => {
-      draft.open_issues_count = payload.open_issues_count
-      draft.issues_url = payload.issues_url
-      draft.issues = payload.issues
+      draft.issues = payload
     })
   },
 })

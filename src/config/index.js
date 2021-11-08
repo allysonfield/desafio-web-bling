@@ -1,6 +1,7 @@
 const USER_API_BASE_URI = process.env.REACT_APP_USER_API_BASE_URI
 const TOKEN_KEY_NAME = process.env.REACT_APP_TOKEN_KEY_NAME
 const GITHUB_API_BASE_URI = process.env.REACT_APP_GITHUB_API_BASE_URI
+// const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
 
 const config = {
   USER_API_BASE_URI,

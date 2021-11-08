@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@assets/*": ["./assets/*"],
+      "@assets": ["./assets"],
+      "@components/*": ["./components/*"],
+      "@components": ["./components"],
+      "@config/*": ["./config/*"],
+      "@config": ["./config"],
+      "@models/*": ["./models/*"],
+      "@models": ["./models"],
+      "@constants/*": ["./constants/*"],
+      "@constants": ["./constants"],
+      "@middlewares/*": ["./middlewares/*"],
+      "@middlewares": ["./middlewares"],
+      "@pages/*": ["./pages/*"],
+      "@pages": ["./pages"],
+      "@providers/*": ["./providers/*"],
+      "@providers": ["./providers"],
+      "@redux/*": ["./redux/*"],
+      "@redux": ["./redux"],
+      "@actions": ["./redux/stores/actions.js"],
+      "@routes/*": ["./routes/*"],
+      "@routes": ["./routes"],
+      "@selectors/*": ["./selectors/*"],
+      "@selectors": ["./selectors"],
+      "@services/*": ["./services/*"],
+      "@services": ["./services"],
+      "@styles/*": ["./styles/*"],
+      "@styles": ["./styles"],
+      "@utils/*": ["./utils/*"],
+      "@utils": ["./utils"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

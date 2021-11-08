@@ -1,6 +1,6 @@
-import * as EffectUtility from '../../../utils/effect-utility'
-import githubApi from '../../../services/github-api'
-import { Endpoints } from '../../../constants'
+import * as EffectUtility from '@utils/effect-utility'
+import githubApi from '@services/github-api'
+import { Endpoints } from '@constants'
 
 
 export async function obter(repositoryName) {

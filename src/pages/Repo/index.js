@@ -13,7 +13,7 @@ const Repo = () => {
   const repo = useSelector(RepoSelector.repo);
 
   const repos = async () => {
-    await dispatch(RepoActions.obter('gsomenzibling/typeorm'));
+    await dispatch(RepoActions.obter('anchetaWern/React-Native-Food-Delivery'));
   }
 
   useEffect(() => {

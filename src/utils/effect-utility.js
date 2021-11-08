@@ -1,5 +1,5 @@
-import HttpErrorResponseModel from '../model/http-error-response-model'
-import * as HttpUtility from './http-utility'
+import HttpErrorResponseModel from '@models/http-error-response-model'
+import * as HttpUtility from '@utils/http-utility'
 
 function checkResponseErrors(response) {
   if (response instanceof HttpErrorResponseModel) {

@@ -4,19 +4,20 @@ import { Route, Redirect } from 'react-router-dom'
 import { useAuth } from '@providers/auth-provider'
 import { Routes } from '@constants'
 
-const PublicRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
   const { isAuthenticated } = useAuth()
  
   return (
     <Route
       {...rest}
       render={props =>
-        !isAuthenticated ? (
+        isAuthenticated ? (
           <Component {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: Routes.SignIn
+              pathname: Routes.Home,
+              state: { from: props.location },
             }}
           />
         )
@@ -25,4 +26,4 @@ const PublicRoute = ({ component: Component, ...rest }) => {
   )
 }
 
-export default PublicRoute
+export default PrivateRoute

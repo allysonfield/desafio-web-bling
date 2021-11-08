@@ -1,4 +1,4 @@
-import HttpErrorResponseModel from "../model/http-error-response-model"
+import HttpErrorResponseModel from "@models/http-error-response-model"
 
 const RequestMethod = {
   Get: 'GET',

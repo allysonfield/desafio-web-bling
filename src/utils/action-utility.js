@@ -1,4 +1,4 @@
-import HttpErrorResponseModel from '../model/http-error-response-model'
+import HttpErrorResponseModel from '@models/http-error-response-model'
 
 
 export async function createThunkEffect(dispatch, actionType, effect, ...args) {
