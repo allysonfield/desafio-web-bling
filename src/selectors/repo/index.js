@@ -3,6 +3,7 @@ import { createSelector } from 'reselect'
 
 const _repo = ({
   id,
+  name,
   full_name,
   owner,
   description,
@@ -14,6 +15,7 @@ const _repo = ({
 }) => {
   return {
     id,
+    name,
     full_name,
     owner,
     description,

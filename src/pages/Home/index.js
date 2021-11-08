@@ -5,6 +5,7 @@ import CalcRepeatWord from '@components/calculo-da-letra';
 import ConserteCaosEntreStrings from '@components/conserte-caos-entre-strings';
 import Modal from '@components/modal';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 
 import {
   Container,
@@ -12,6 +13,7 @@ import {
 } from './styled';
 
 const Home = () => {
+  const history = useHistory();
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
@@ -35,7 +37,7 @@ const Home = () => {
       <Content onClick={() => setModal5(true)}>
         <h3>Atualizando dados na tela</h3>
       </Content>
-      <Content>
+      <Content onClick={() => history.push('/repo')}>
         <h3>Dados do repositório do Github</h3>
       </Content>
       <Content>

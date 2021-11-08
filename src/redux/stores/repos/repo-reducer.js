@@ -6,6 +6,7 @@ import * as Actions from './repo-actions'
 
 export const initialState = {
   id: null,
+  name: null,
   full_name: null,
   owner: {},
   description: '',
@@ -18,6 +19,7 @@ const repoReducer = baseReducer(initialState, {
   [Actions.REQUEST_GET_FINISHED](state, { payload } ) {
     return produce(state, draft => {
       draft.id = payload.id
+      draft.name = payload.name
       draft.full_name = payload.full_name
       draft.owner = payload.owner
       draft.description = payload.description
