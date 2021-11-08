@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   background: #fff;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
   width: 610px;
   border-radius: 5px;
 `;
@@ -26,10 +26,14 @@ export const Input = styled.input.attrs({
   type: 'text',
 })`
   text-align: center;
-  margin-bottom: 10px;
-  width: 300px;
+  width: 10px;
+  margin-right: 5px;
 `;
 
 export const ResultContainer = styled.div``;
+
+export const ArrayValuesContainer = styled.div`
+  margin-bottom: 20px;
+`;
 
 export const Result = styled.span``;

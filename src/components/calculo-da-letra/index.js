@@ -31,6 +31,7 @@ const CalcRepeatWord = () => {
         {phrase && letter && <Result>{buscarVezesLetra()}</Result>}
         </ResultContainer>
         </Content>
+        
     </Container>
   );
 }

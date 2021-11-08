@@ -3,10 +3,11 @@ import React, { useEffect, useRef } from 'react';
 
 import {
   Background,
+  ButtonClose,
   Container,
 } from './styled';
 
-const Modal = ({show, onBackdropPress, children}) => {
+const Modal = ({show, onBackdropPress, children, onClose}) => {
   const wrapperRef = useRef(null);
   const useOutsideAlerter = async (ref) => {
 
@@ -32,6 +33,7 @@ const Modal = ({show, onBackdropPress, children}) => {
     <Container >
         <div ref={wrapperRef}>
           {children}
+          <ButtonClose onClick={onClose}>fechar</ButtonClose>
         </div>
         
     </Container>

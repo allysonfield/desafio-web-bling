@@ -1,25 +1,23 @@
+import ArrayDuplicatedFilter from '@components/array-duplicated-filter';
 import CalcRepeatWord from '@components/calculo-da-letra';
 import Modal from '@components/modal';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RepoActions } from '../../redux/stores/actions';
-import { RepoSelector } from '../../selectors';
+import React, { useState } from 'react';
 
 import {
-  Container, Content
+  Container,
+  Content
 } from './styled';
 
 const Home = () => {
-  const [modal1, setModal1] = useState(true);
-
-  
+  const [modal1, setModal1] = useState(false);
+  const [modal2, setModal2] = useState(false);
   
   return (
     <Container>
-      <Content>
+      <Content onClick={() => setModal1(true)}>
         <h3>Quantas vezes o caractere ocorre</h3>
       </Content>
-      <Content>
+      <Content onClick={() => setModal2(true)}>
         <h3>Mescle 2 arrays com valores duplicados.</h3>
       </Content>
       <Content>
@@ -38,9 +36,20 @@ const Home = () => {
         <h3>Lista de Tarefas</h3>
       </Content>
       <Modal
+        onBackdropPress={() => setModal1(false)}
+        onClose={() => setModal1(false)}
         show={modal1}
         children={
           <CalcRepeatWord />
+        }
+      />
+
+      <Modal
+        onBackdropPress={() => setModal2(false)}
+        onClose={() => setModal2(false)}
+        show={modal2}
+        children={
+          <ArrayDuplicatedFilter />
         }
       />
     </Container>
