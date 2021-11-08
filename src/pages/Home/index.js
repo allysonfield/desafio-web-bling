@@ -1,4 +1,5 @@
 import ArrayDuplicatedFilter from '@components/array-duplicated-filter';
+import AtualizandoDadosNaTela from '@components/atualizando-dados-na-tela';
 import CalculeTempoEmDias from '@components/calcule-tempo-dias';
 import CalcRepeatWord from '@components/calculo-da-letra';
 import ConserteCaosEntreStrings from '@components/conserte-caos-entre-strings';
@@ -15,6 +16,7 @@ const Home = () => {
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
   const [modal4, setModal4] = useState(false);
+  const [modal5, setModal5] = useState(false);
   
   return (
     <Container>
@@ -30,7 +32,7 @@ const Home = () => {
       <Content onClick={() => setModal4(true)}>
         <h3>Calcule o tempo em dias.</h3>
       </Content>
-      <Content>
+      <Content onClick={() => setModal5(true)}>
         <h3>Atualizando dados na tela</h3>
       </Content>
       <Content>
@@ -72,6 +74,15 @@ const Home = () => {
         show={modal4}
         children={
           <CalculeTempoEmDias />
+        }
+      />
+
+      <Modal
+        onBackdropPress={() => setModal5(false)}
+        onClose={() => setModal5(false)}
+        show={modal5}
+        children={
+          <AtualizandoDadosNaTela />
         }
       />
     </Container>

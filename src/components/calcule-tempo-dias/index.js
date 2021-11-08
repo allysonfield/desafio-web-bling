@@ -11,12 +11,9 @@ const CalculeTempoEmDias = () => {
   const [data1, setData1] = useState('');
   const [data2, setData2] = useState('');
 
- 
-
   function onChangeText(value){
     return maskDate(value)
   }
-
 
   function calcularDiferenca(dataInicio, dataFinal){
     if(dataInicio.match(dateRegex) && dataFinal.match(dateRegex)){
