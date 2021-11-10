@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "email": "allysonfield2@gmail.com",
+      "password": "$2a$10$l97rivO1RDbFBj7BTmR5/.N5/rdbyA2ocqznvJD8NbFVoaHJAmA.K",
+      "name": "Allyson Carlos Martins Monteiro",
+      "id": 1
+    },
+    {
+      "email": "allysonfield2@hotmail.com",
+      "password": "$2a$10$1QUeBtuZoNP6ECUDarH2J.TmKprQzsU2FSZbKi7Ah2QsFajbYVZVq",
+      "name": "allyson martins",
+      "id": 2
+    }
+  ]
+}
