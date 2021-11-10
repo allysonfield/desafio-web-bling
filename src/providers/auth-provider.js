@@ -65,11 +65,11 @@ const AuthProvider = ({ children }) => {
     
   }
 
-  // const signOut = useCallback(() => {
-  //   removeSessionData()
-  //   setData({})
-  //   window.location.href = URL_WEB
-  // }, [])
+  const signOut = useCallback(() => {
+    removeSessionData()
+    setData({})
+    // window.location.href = URL_WEB
+  }, [])
 
   return (
     <AuthContext.Provider
@@ -77,7 +77,8 @@ const AuthProvider = ({ children }) => {
         isAuthenticated: data.isAuthenticated,
         user: data.user,
         signIn,
-        signUp
+        signUp,
+        signOut
       }}
     >
       {children}

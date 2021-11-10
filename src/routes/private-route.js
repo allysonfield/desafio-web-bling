@@ -16,7 +16,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: Routes.SignIn
+              pathname: Routes.Home
             }}
           />
         )

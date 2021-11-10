@@ -4,6 +4,7 @@ import CalculeTempoEmDias from '@components/calcule-tempo-dias';
 import CalcRepeatWord from '@components/calculo-da-letra';
 import ConserteCaosEntreStrings from '@components/conserte-caos-entre-strings';
 import Modal from '@components/modal';
+import { useAuth } from '@providers/auth-provider';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
@@ -14,6 +15,7 @@ import {
 
 const Home = () => {
   const history = useHistory();
+  const {isAuthenticated} = useAuth()
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
@@ -40,8 +42,8 @@ const Home = () => {
       <Content onClick={() => history.push('/repo')}>
         <h3>Dados do repositório do Github</h3>
       </Content>
-      <Content onClick={() => history.push('/task')}>
-        <h3>Lista de Tarefas</h3>
+      <Content onClick={() => isAuthenticated ? history.push('/task') : history.push('/signin')}>
+        <h3>Lista de Tarefas com Login</h3>
       </Content>
       <Modal
         onBackdropPress={() => setModal1(false)}

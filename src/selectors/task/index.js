@@ -2,26 +2,10 @@ import { createSelector } from 'reselect'
 
 
 const _task = ({
-  nome,
-  descricao,
-  habilitarTrainingCheck,
-  permitirAcessoGaleria,
-  habilitarAtividade,
-  necessidadeCheckinCheckout,
-  permitirGamification,
-  exibirPontuacaoFinalAplicativo,
-  exibirPesoPerguntaAplicativo,
+ tasks
 }) => {
   return {
-    nome,
-    descricao,
-    habilitarTrainingCheck,
-    permitirAcessoGaleria,
-    habilitarAtividade,
-    necessidadeCheckinCheckout,
-    permitirGamification,
-    exibirPontuacaoFinalAplicativo,
-    exibirPesoPerguntaAplicativo,
+    tasks
   }
 }
 

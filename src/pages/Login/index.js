@@ -1,13 +1,16 @@
 import { useAuth } from '@providers/auth-provider';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 
 import {
   Button,
+  ButtonRegister,
   Container, Content, Form, Input
 } from './styled';
 
 const Login = () => {
-  const {signIn} = useAuth()
+  const {signIn} = useAuth();
+  const history = useHistory();
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
@@ -41,6 +44,9 @@ const Login = () => {
           <Button onClick={register} type="button">
             <span>Entrar</span>
           </Button>
+          <ButtonRegister onClick={() => history.push('/signup')} type="button">
+            <span>Cadastrar</span>
+          </ButtonRegister>
         </Form>
       </Content>
     </Container>

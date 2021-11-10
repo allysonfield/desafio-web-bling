@@ -58,4 +58,16 @@ export const Button = styled.button`
   font-weight: bolder;
   color: white;
   cursor: pointer;
+  margin-bottom: 10px;
+`
+
+export const ButtonRegister = styled.button`
+  border: none;
+  background: transparent;
+  align-self: flex-end;
+  font-size: 15px;
+  font-weight: bolder;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 10px;
 `

@@ -1,33 +1,39 @@
-import { push } from 'connected-react-router'
+
 
 import * as ActionUtility from '../../../../utils/action-utility'
-import * as Effects from './task-effects'
+import {v4 as uuidv4} from 'uuid'
 
 export const REQUEST_CRIAR = 'Task.REQUEST_CRIAR'
-export const REQUEST_CRIAR_FINISHED = 'Task.REQUEST_CRIAR_FINISHED'
+export const REQUEST_CHECK = 'Task.REQUEST_CHECK'
+export const REQUEST_DELETE = 'Task.REQUEST_DELETE'
 
-export const REQUEST_GET = 'Task.REQUEST_GET'
-export const REQUEST_GET_FINISHED = 'Task.REQUEST_GET_FINISHED'
-
-export const REQUEST_ATUALIZAR_DADOS = 'Task.REQUEST_ATUALIZAR_DADOS'
-export const REQUEST_ATUALIZAR_DADOS_FINISHED = 'Task.REQUEST_ATUALIZAR_DADOS_FINISHED'
-
-export const REQUEST_DELETAR = 'Task.REQUEST_DELETAR'
-export const REQUEST_DELETAR_FINISHED = 'Task.REQUEST_DELETAR_FINISHED'
-
-export const REQUEST_OBTER_DOCUMENTOS = 'Task.REQUEST_OBTER_DOCUMENTOS'
-export const REQUEST_OBTER_DOCUMENTOS_FINISHED = 'Task.REQUEST_OBTER_DOCUMENTOS_FINISHED'
-
-export const REQUEST_UPLOAD_DOCUMENTO = 'Task.REQUEST_UPLOAD_DOCUMENTO'
-export const REQUEST_UPLOAD_DOCUMENTO_FINISHED = 'Task.REQUEST_UPLOAD_DOCUMENTO_FINISHED'
-export const REQUEST_UPLOAD_DOCUMENTO_SET_PROGRESS = 'Task.REQUEST_UPLOAD_DOCUMENTO_SET_PROGRESS'
-export const REQUEST_UPLOAD_DOCUMENTO_ERROR = 'Task.REQUEST_UPLOAD_DOCUMENTO_ERROR'
-
-export const REQUEST_DELETAR_DOCUMENTO = 'Task.REQUEST_DELETAR_DOCUMENTO'
-export const REQUEST_DELETAR_DOCUMENTO_FINISHED = 'Task.REQUEST_DELETAR_DOCUMENTO_FINISHED'
 
 export const SET_DATA = 'Task.SET_DATA'
 
 export function setData(data) {
   return ActionUtility.createAction(SET_DATA, data)
+}
+
+export function criar(name) {
+  return async (dispatch, getState) => {
+    const data = {
+      id: uuidv4(),
+      name,
+      date: new Date(),
+      checked: false
+    }
+    dispatch(ActionUtility.createAction(REQUEST_CRIAR, data))
+  }
+}
+
+export function check(id) {
+  return async (dispatch, getState) => {
+    dispatch(ActionUtility.createAction(REQUEST_CHECK, {id}))
+  }
+}
+
+export function deleteTask(id) {
+  return async (dispatch, getState) => {
+    dispatch(ActionUtility.createAction(REQUEST_DELETE, {id}))
+  }
 }
