@@ -40,7 +40,7 @@ const Home = () => {
       <Content onClick={() => history.push('/repo')}>
         <h3>Dados do repositório do Github</h3>
       </Content>
-      <Content>
+      <Content onClick={() => history.push('/task')}>
         <h3>Lista de Tarefas</h3>
       </Content>
       <Modal

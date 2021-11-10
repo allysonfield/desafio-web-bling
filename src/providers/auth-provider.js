@@ -1,9 +1,10 @@
+
 import React, { useContext, useState, useCallback } from 'react'
+import { useHistory } from 'react-router'
 
 import { TOKEN_KEY_NAME } from '../config'
-import { Endpoints } from '../constants' 
+import { Endpoints, Routes } from '../constants' 
 import api from '../services/api'
-import { get } from '../utils/http-utility'
 
 const removeSessionData = () => {
   window.sessionStorage.removeItem(TOKEN_KEY_NAME)
@@ -18,31 +19,50 @@ const AuthContext = React.createContext({
   user: {},
   signIn: () => {},
   signOut: () => {},
+  signUp: () => {},
 })
 
 const AuthProvider = ({ children }) => {
+  const history = useHistory();
   const [data, setData] = useState(() => {
     const token = window.sessionStorage.getItem(TOKEN_KEY_NAME)
 
     if (token) {
+      console.log({token})
       setApiToken(token)
-      return { isAuthenticated: true, token: JSON.parse(token) }
+      return { isAuthenticated: true, token: token }
     }
-
+    console.log('sem token')
     return { isAuthenticated: false, user: {} }
   })
 
-  const signIn = async () => {
+  const signIn = async (email, password) => {
     
 
-    const response = await get(api, Endpoints.LoginApi.entrar)
+    try {
+      const {data: response} = await api.post(Endpoints.LoginApi.entrar, {email, password})
 
-    if (response) {
-      removeSessionData()
-      setApiToken(response.token)
-      setData({ isAuthenticated: true, token: response.token, user: response })
-      window.sessionStorage.setItem(TOKEN_KEY_NAME, JSON.parse(response.token))
+    
+        removeSessionData()
+        setApiToken(response.accessToken)
+        setData({ isAuthenticated: true, token: response.accessToken, user: response.user })
+        window.sessionStorage.setItem(TOKEN_KEY_NAME, response.accessToken)
+        history.push(Routes.Task.Home)
+    
+    } catch (error) {
+      console.log({error})
     }
+  }
+
+  const signUp = async (name, email, password) => {
+
+    try {
+      await api.post(Endpoints.LoginApi.registrar, { name, email, password })
+      history.push(Routes.SignIn)
+    } catch (error) {
+      throw new Error()
+    }
+    
   }
 
   // const signOut = useCallback(() => {
@@ -56,7 +76,8 @@ const AuthProvider = ({ children }) => {
       value={{
         isAuthenticated: data.isAuthenticated,
         user: data.user,
-        signIn
+        signIn,
+        signUp
       }}
     >
       {children}

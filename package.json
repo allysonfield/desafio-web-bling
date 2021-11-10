@@ -29,6 +29,7 @@
   },
   "scripts": {
     "start": "craco start",
+    "dev": "concurrently \"json-server ./src/services/db.json --port 8096 --delay 700 -m ./node_modules/json-server-auth\" \"craco start\"",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -54,6 +55,9 @@
   "devDependencies": {
     "babel-jest": "25.5.1",
     "babel-plugin-styled-components": "^1.13.3",
-    "craco-alias": "^3.0.1"
+    "concurrently": "^6.3.0",
+    "craco-alias": "^3.0.1",
+    "json-server": "^0.17.0",
+    "json-server-auth": "^2.1.0"
   }
 }

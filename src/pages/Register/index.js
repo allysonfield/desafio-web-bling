@@ -6,14 +6,15 @@ import {
   Container, Content, Form, Input
 } from './styled';
 
-const Login = () => {
-  const {signIn} = useAuth()
+const Register = () => {
+  const {signUp} = useAuth()
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
   async function register(){
-    if(email !== '' && senha !== ''){
-      await signIn(email, senha);
+    if(nome !== '' && email !== '' && senha !== ''){
+      await signUp(nome, email, senha);
     } else {
       alert('Preencha todos os campos!');
     }
@@ -22,9 +23,15 @@ const Login = () => {
   return (
     <Container>
       <Content>
-        <h1>Login</h1>
+        <h1>Cadastro</h1>
         <Form>
-          
+          <Input
+            value={nome}
+            onChange={(event) => setNome(event.target.value)}
+            type="text"
+            name="nome"
+            placeholder="Seu nome"
+          />
           <Input
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -39,7 +46,7 @@ const Login = () => {
             placeholder="Digite sua senha"
           />
           <Button onClick={register} type="button">
-            <span>Entrar</span>
+            <span>Finalizar</span>
           </Button>
         </Form>
       </Content>
@@ -47,4 +54,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default Register;
