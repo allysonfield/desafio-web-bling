@@ -1,4 +1,4 @@
-## Available Scripts
+## Instrução de comandos para rodar a aplicação.
 
 No diretório do projeto:
 
